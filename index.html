@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Your 3-Day Free AI Trial | Alaaudin AI Labs</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #0a0a0c; color: #ffffff; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .form-container { background: #121216; padding: 40px; border-radius: 15px; width: 100%; max-width: 500px; border: 1px solid #23232a; box-shadow: 0 10px 30px rgba(0,0,0,0,5); }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { font-size: 24px; font-weight: 800; color: #ffffff; margin-bottom: 8px; }
+        .header p { font-size: 14px; color: #10b981; font-weight: 600; letter-spacing: 1px; }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-size: 13px; color: #8e8e93; margin-bottom: 8px; font-weight: 500; }
+        .input-group input { width: 100%; padding: 12px 16px; background: #1c1c24; border: 1px solid #2d2d3d; border-radius: 8px; color: #ffffff; font-size: 15px; transition: all 0.3s ease; }
+        .input-group input:focus { border-color: #10b981; outline: none; background: #22222d; }
+        .input-group span { font-size: 11px; color: #636366; display: block; margin-top: 4px; }
+        .btn-submit { width: 100%; padding: 14px; background: #10b981; color: #ffffff; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.3s ease; margin-top: 10px; }
+        .btn-submit:hover { background: #059669; }
+        .success-msg { display: none; background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #10b981; padding: 15px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 600; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="header">
+        <h1>Alaaudin AI Labs</h1>
+        <p>🚀 CLAIM YOUR 3-DAY FREE AI TRIAL</p>
+    </div>
+
+    <form id="trialForm">
+        <div class="input-group">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" required placeholder="John Doe">
+        </div>
+
+        <div class="input-group">
+            <label for="brokerEmail">Business Email *</label>
+            <input type="email" id="brokerEmail" required placeholder="john@californiarealty.com">
+        </div>
+
+        <div class="input-group">
+            <label for="whatsappNumber">WhatsApp / Phone Number *</label>
+            <input type="tel" id="whatsappNumber" required placeholder="+1 (555) 000-0000">
+        </div>
+
+        <div class="input-group">
+            <label for="websiteUrl">Current Website URL (Optional)</label>
+            <input type="url" id="websiteUrl" placeholder="https://mywebsite.com">
+            <span>If you don't have a website, leave it blank! We will provide a free hosting link.</span>
+        </div>
+
+        <button type="submit" class="btn-submit">Activate My Free Trial ⚡</button>
+    </form>
+
+    <div class="success-msg" id="successMessage">
+        🎉 Request Received! Your custom AI Agent is being built. Check your email/WhatsApp within 2 hours for access instructions!
+    </div>
+</div>
+
+<script>
+    document.getElementById('trialForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('fullName').value;
+        const email = document.getElementById('brokerEmail').value;
+        const phone = document.getElementById('whatsappNumber').value;
+        const website = document.getElementById('websiteUrl').value || "No Website (Needs Standalone Link)";
+
+        // 🛑 NEW N8N WEBHOOK TRIGGER
+        // Jab n8n par naya workflow banao, toh uska Test URL yahan paste kar dena!
+        const n8n_webhook_url = "YOUR_NEW_N8N_TRIAL_WEBHOOK_URL"; 
+
+        const payload = {
+            "broker_name": name,
+            "broker_email": email,
+            "broker_phone": phone,
+            "broker_website": website,
+            "status": "Trial Requested"
+        };
+
+        try {
+            // Data sending to n8n
+            await fetch(n8n_webhook_url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            
+            // Hide form and show success message
+            document.getElementById('trialForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        } catch (error) {
+            alert("System busy. Please try again later!");
+        }
+    });
+</script>
+
+</body>
+</html>
