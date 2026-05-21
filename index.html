@@ -3,317 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Provision Enterprise AI sandbox Instance | Alaaudin AI Labs</title>
+    <title>Enterprise Sandbox | Alaaudin AI Labs</title>
     <style>
         :root {
-            /* 🌌 Deep Cosmic Noir Palette */
-            --bg-noir: #030304;
-            --form-bg: rgba(10, 10, 15, 0.65);
-            --accent-emerald: #10b981;
-            --accent-cyan: #22d3ee;
-            --border-dark: rgba(255, 255, 255, 0.04);
+            --bg-obsidian: #000000;
+            --card-bg: rgba(12, 12, 12, 0.4);
+            --border-glow: rgba(255, 255, 255, 0.1);
+            --accent-primary: #10b981;
+            --accent-hover: #059669;
             --text-main: #ffffff;
-            --text-muted: #8c8c91;
-            --plasma-sel: rgba(16, 185, 129, 0.15);
+            --text-dim: #71717a;
+            --plasma: rgba(16, 185, 129, 0.2);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
 
-        /* 👑 1: THE ULTIMATE PLASMA TEXT SELECTION PROTOCOL IS ON! */
-        ::selection {
-            background-color: var(--plasma-sel);
-            color: var(--accent-cyan);
-            text-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
-            animation: plasmaPulse 2s infinite alternate;
-        }
-        ::-moz-selection {
-            background-color: var(--plasma-sel);
-            color: var(--accent-cyan);
-            text-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
-        }
-
-        @keyframes plasmaPulse {
-            0% { background-color: rgba(16, 185, 129, 0.15); }
-            100% { background-color: rgba(34, 211, 238, 0.15); }
-        }
+        /* ELITE TEXT SELECTION */
+        ::selection { background-color: var(--plasma); color: #fff; text-shadow: 0 0 8px rgba(16, 185, 129, 0.8); }
 
         body {
-            background-color: var(--bg-noir);
+            background-color: var(--bg-obsidian);
             color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
-            overflow-x: hidden;
-            position: relative;
+            overflow: hidden;
+            perspective: 1500px; /* For 3D effect */
         }
 
-        /* 🌌 2: DYNAMIC COSMIC NEBULA BACKGROUND MESH */
-        body::before {
-            content: '';
+        /* 🎬 CINEMATIC FILM GRAIN NOISE */
+        .grain-overlay {
+            position: fixed;
+            top: -50%; left: -50%; right: -50%; bottom: -50%;
+            width: 200%; height: 200vh;
+            background: transparent url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+            opacity: 0.04;
+            z-index: 1;
+            pointer-events: none;
+            animation: noise 8s steps(10) infinite;
+        }
+
+        @keyframes noise {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 35%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+
+        /* 🌌 AMBIENT BACKGROUND GLOW */
+        .ambient-glow {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.08) 0%, rgba(0,0,0,0) 40%),
-                radial-gradient(circle at 80% 10%, rgba(34, 211, 238, 0.06) 0%, rgba(0,0,0,0) 30%),
-                radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.05) 0%, rgba(0,0,0,0) 50%);
-            top: 0;
-            left: 0;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 60%);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(80px);
             z-index: 0;
-            animation: nebulaShift 20s ease-in-out infinite alternate;
+            animation: pulseGlow 8s infinite alternate ease-in-out;
         }
 
-        @keyframes nebulaShift {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1) rotate(5deg); }
+        @keyframes pulseGlow {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
         }
 
-        /* 🛡️ 3: STEALTH MONOLITH-Ω CONTAINER (ULTRA GLASSMORPHISM) */
-        .cyber-wrapper {
+        /* 🛸 THE 3D OBSIDIAN CARD */
+        .nexus-card {
             position: relative;
             z-index: 10;
             width: 100%;
-            max-width: 480px;
-            background: var(--form-bg);
-            /* Strong professional blur and saturation */
-            backdrop-filter: blur(40px) saturate(220%);
-            -webkit-backdrop-filter: blur(40px) saturate(220%);
-            padding: 50px 40px;
-            border-radius: 24px;
-            overflow: hidden; /* For inner flare animation */
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0;
-            transform: scale(0.9) translateY(20px);
-            animation: monolithEntry 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
+            max-width: 440px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 45px 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out; /* JavaScript handles the smooth tilt */
         }
 
-        @keyframes monolithEntry {
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        /* 🦾 THE INVISIBLE SHIFTING MOUSE BORDER (Interactive Ego!) */
-        .cyber-wrapper::before {
+        /* DYNAMIC SPOTLIGHT (Updated via JS) */
+        .nexus-card::before {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: radial-gradient(
-                200px circle at var(--mouse-x) var(--mouse-y),
-                rgba(16, 185, 129, 0.15) 0%,
-                transparent 100%
-            );
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 16px;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
             z-index: -1;
-            transition: opacity 0.3s ease;
-            opacity: 0;
-        }
-
-        .cyber-wrapper:hover::before { opacity: 1; }
-
-        /* Subtle dark inner background with inset shadow */
-        .cyber-wrapper::after {
-            content: '';
-            position: absolute;
-            inset: 1.5px;
-            background: var(--form-bg);
-            border-radius: 24px;
-            z-index: -1;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
-        }
-
-        /* 🌟 ROTATING INNER FLARE (The Nirvana Touch) */
-        .inner-flare {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                rgba(16, 185, 129, 0) 0%,
-                rgba(16, 185, 129, 0.05) 50%,
-                rgba(16, 185, 129, 0) 100%
-            );
-            top: -50%;
-            left: -50%;
-            animation: flareRotate 10s linear infinite;
-            mix-blend-mode: color-dodge;
             pointer-events: none;
-            z-index: -2;
+            transition: opacity 0.4s ease;
+            opacity: 0;
         }
+        .nexus-card:hover::before { opacity: 1; }
 
-        @keyframes flareRotate {
-            to { transform: rotate(360deg); }
-        }
+        .header { text-align: center; margin-bottom: 35px; transform: translateZ(30px); }
+        .header .badge { display: inline-block; padding: 4px 10px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 100px; font-size: 10px; font-weight: 700; color: var(--accent-primary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
+        .header h1 { font-size: 26px; font-weight: 600; letter-spacing: -1px; margin-bottom: 8px; color: #fff; }
+        .header p { font-size: 14px; color: var(--text-dim); line-height: 1.5; }
 
-        .header { text-align: center; margin-bottom: 40px; }
-        .header .lab-tag { font-size: 11px; font-weight: 900; color: var(--accent-emerald); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
-        .header h1 { font-size: 28px; font-weight: 700; letter-spacing: -1px; margin-bottom: 10px; color: #ffffff; }
-        .header p { font-size: 15px; color: var(--text-muted); line-height: 1.6; max-width: 90%; margin: 0 auto; }
-
-        /* ⚡ ULTRACLEAN INTERACTIVE INPUTS */
-        .input-group { margin-bottom: 28px; position: relative; }
-        .input-group label { display: block; font-size: 11px; font-weight: 700; color: #707070; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+        /* ⚡ MINIMALIST INPUTS */
+        .input-group { margin-bottom: 24px; position: relative; transform: translateZ(20px); }
+        .input-group label { display: block; font-size: 11px; font-weight: 500; color: #a1a1aa; margin-bottom: 8px; letter-spacing: 0.5px; }
         
         .input-group input {
             width: 100%;
-            padding: 16px 20px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            border-radius: 12px;
+            padding: 14px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             color: #ffffff;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 400;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s ease;
         }
 
-        .input-group input::placeholder { color: #404040; }
+        .input-group input::placeholder { color: #52525b; }
         
-        /* Interactive Input Glow (Makkhan Transition) */
-        .input-group input:focus {
-            outline: none;
-            background: rgba(0, 0, 0, 0.5);
-            border-color: rgba(16, 185, 129, 0.25);
-            box-shadow: 
-                0 0 15px rgba(16, 185, 129, 0.05),
-                inset 0 0 10px rgba(16, 185, 129, 0.02);
+        /* The Expanding Bottom Border Glow */
+        .input-group input:focus { outline: none; border-bottom-color: transparent; }
+        .input-group::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px;
+            background: var(--accent-primary); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%); box-shadow: 0 -2px 10px rgba(16, 185, 129, 0.5);
         }
+        .input-group:focus-within::after { width: 100%; }
 
-        /* Specialized Security Micro-copy (friction removed, trust built) */
-        .input-group .security-note { font-size: 11px; color: #555555; display: block; margin-top: 7px; line-height: 1.5; }
+        .security-note { font-size: 11px; color: #52525b; display: block; margin-top: 8px; line-height: 1.4; font-style: italic; }
 
-        /* 🚀 THE STEALTH ACTIVATE BUTTON (Dual Glow) */
+        /* 🚀 THE SWEEPING GRADIENT BUTTON */
         .btn-submit {
             width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #11c690 0%, #059669 100%);
-            color: #000000;
+            padding: 16px;
+            background: var(--text-main);
+            color: #000;
             border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
-            margin-top: 10px;
+            transform: translateZ(40px);
+            transition: all 0.3s ease;
+            margin-top: 15px;
         }
 
-        .btn-submit:hover {
-            transform: translateY(-2.5px);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2), 0 0 15px rgba(34, 211, 238, 0.08);
+        .btn-submit::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transition: all 0.5s ease;
         }
 
-        .btn-submit:active { transform: translateY(0); }
+        .btn-submit:hover { background: #e4e4e7; transform: translateZ(40px) scale(1.02); box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1); }
+        .btn-submit:hover::before { left: 100%; }
 
-        /* 🎉 SMOOTH DEEP ENTRY SUCCESS STATE */
-        .success-pane {
-            display: none;
-            text-align: center;
-            padding: 20px 0;
-            animation: cyberFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .success-pane .cyber-icon {
-            width: 76px;
-            height: 76px;
-            background: rgba(16, 185, 129, 0.04);
-            border: 1px solid var(--accent-emerald);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 25px auto;
-            color: var(--accent-emerald);
-            font-size: 36px;
-            font-weight: bold;
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
-        }
-
-        .success-pane h2 { font-size: 24px; font-weight: 700; margin-bottom: 15px; color: #ffffff; letter-spacing: -0.5px; }
-        .success-pane p { font-size: 15px; color: var(--text-muted); line-height: 1.7; max-width: 90%; margin: 0 auto; }
-
-        @keyframes cyberFadeIn {
-            from { opacity: 0; transform: scale(0.9) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
+        /* 🎉 SUCCESS STATE */
+        .success-pane { display: none; text-align: center; transform: translateZ(30px); }
+        .success-pane .icon { width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .success-pane svg { width: 30px; height: 30px; stroke: var(--accent-primary); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .success-pane h2 { font-size: 22px; margin-bottom: 10px; }
+        .success-pane p { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
     </style>
 </head>
 <body>
 
-<div class="cyber-wrapper" id="monolithWrapper">
-    <div class="inner-flare"></div>
+<div class="grain-overlay"></div>
+<div class="ambient-glow"></div>
 
+<div class="nexus-card" id="monolithWrapper">
     <div id="formContent">
         <div class="header">
-            <div class="lab-tag">Alaaudin AI Labs</div>
-            <h1>Provision Instance</h1>
-            <p>Compile a secure 3-day enterprise AI advisor sandbox node within your California business infrastructure.</p>
+            <div class="badge">Alaaudin AI Labs</div>
+            <h1>Initialize Sandbox</h1>
+            <p>Deploy a California Real Estate AI Node securely.</p>
         </div>
 
         <form id="trialForm">
             <div class="input-group">
                 <label for="fullName">Legal Full Name</label>
-                <input type="text" id="fullName" required placeholder=" Sarah Jenkins">
+                <input type="text" id="fullName" required placeholder="John Doe">
             </div>
 
             <div class="input-group">
-                <label for="brokerEmail">Direct Business Email</label>
-                <input type="email" id="brokerEmail" required placeholder="sarah@californiarealty.com">
+                <label for="brokerEmail">Business Email</label>
+                <input type="email" id="brokerEmail" required placeholder="john@californiarealty.com">
             </div>
 
             <div class="input-group">
-                <label for="whatsappNumber">Secure Mobile Routing / WhatsApp</label>
-                <input type="tel" id="whatsappNumber" required placeholder="+1 (555) 382-9901">
-                <span class="security-note">🔒 Zero-Spam Gateway: Used strictly for texts containing secure access tokens.</span>
+                <label for="whatsappNumber">Mobile / WhatsApp</label>
+                <input type="tel" id="whatsappNumber" required placeholder="+1 (555) 000-0000">
+                <span class="security-note">End-to-end encrypted protocol. No marketing solicitations.</span>
             </div>
 
             <div class="input-group">
-                <label for="websiteUrl">Infrastructure Web Domain (Optional)</label>
-                <input type="url" id="websiteUrl" placeholder="https://sarahjenkinsrealty.com">
-                <span class="security-note">No active domain? Leave blank. We will provision a dedicated cloud-hosted sandbox access node.</span>
+                <label for="websiteUrl">Infrastructure Domain</label>
+                <input type="url" id="websiteUrl" placeholder="https://domain.com (Optional)">
             </div>
 
-            <button type="submit" class="btn-submit" id="submitBtn">Compile AI Sandbox Node ⚡</button>
+            <button type="submit" class="btn-submit" id="submitBtn">Deploy Infrastructure</button>
         </form>
     </div>
 
     <div class="success-pane" id="successContent">
-        <div class="cyber-icon">✔️</div>
-        <h2>Compilation Triggered</h2>
-        <p>Your dedicated sandbox infrastructure is now compiling. Instantiation protocols, access tokens, and node configurations are being dispatched to your business email router and mobile gateway within the next 2 hours.</p>
+        <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
+        </div>
+        <h2>Deployment Active</h2>
+        <p>Sandbox compiling. Access tokens are being securely routed to your designated business endpoints.</p>
     </div>
 </div>
 
 <script>
-    // 🧠 4: INTERACTIVE MOUSE-SHIFTING BORDER ENGINE
-    document.querySelector('.cyber-wrapper').addEventListener('mousemove', (e) => {
-        const wrapper = e.currentTarget;
-        const rect = wrapper.getBoundingClientRect();
-        
-        // Calculate dynamic X and Y coordinates inside the form
+    // 🛸 100/10 INTERACTIVE 3D MAGNETIC TILT ENGINE + SPOTLIGHT
+    const card = document.getElementById('monolithWrapper');
+    
+    document.addEventListener('mousemove', (e) => {
+        // Spotlight calculation
+        const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+
+        // 3D Tilt calculation
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
         
-        // Set CSS variables that drive the dynamic background border
-        wrapper.style.setProperty('--mouse-x', `${x}px`);
-        wrapper.style.setProperty('--mouse-y', `${y}px`);
+        // Limits the tilt angle
+        const rotateX = ((e.clientY - centerY) / (rect.height / 2)) * -10; 
+        const rotateY = ((e.clientX - centerX) / (rect.width / 2)) * 10;
+
+        // Apply smooth 3D transform only if mouse is relatively close to the card
+        if (e.clientX > rect.left - 100 && e.clientX < rect.right + 100 &&
+            e.clientY > rect.top - 100 && e.clientY < rect.bottom + 100) {
+            card.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        } else {
+            card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg)`;
+        }
+    });
+
+    // Reset tilt when mouse leaves window
+    document.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg)`;
     });
 
     document.getElementById('trialForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
         const button = document.getElementById('submitBtn');
-        button.innerText = "Compiling Sandbox Node...";
-        button.style.opacity = "0.6";
+        button.innerText = "Compiling Node...";
         button.style.pointerEvents = "none";
         
         const name = document.getElementById('fullName').value;
         const email = document.getElementById('brokerEmail').value;
         const phone = document.getElementById('whatsappNumber').value;
-        const website = document.getElementById('websiteUrl').value || "Needs Dedicated Standalone Node (No Domain Provided)";
+        const website = document.getElementById('websiteUrl').value || "No Domain";
 
         // 🛑 ALAAUDIN BRO: YAHAN APNA TRIAL WEBHOOK URL DAALNA HAI!
         const n8n_webhook_url = "YOUR_NEW_N8N_TRIAL_WEBHOOK_URL"; 
@@ -323,24 +277,23 @@
             "broker_email": email,
             "broker_phone": phone,
             "broker_website": website,
-            "status": "Sandbox Node Pipeline Triggered"
+            "status": "Trial Active"
         };
 
         try {
-            // Push data directly to your n8n infrastructure
             await fetch(n8n_webhook_url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
             
-            // Execute premium layout animation switch
             document.getElementById('formContent').style.display = 'none';
             document.getElementById('successContent').style.display = 'block';
+            card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg)`;
         } catch (error) {
-            // Fallback gracefully (show success for MVP)
             document.getElementById('formContent').style.display = 'none';
             document.getElementById('successContent').style.display = 'block';
+            card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg)`;
         }
     });
 </script>
