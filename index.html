@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise Sandbox | Alaaudin AI Labs</title>
+    <title>Enterprise AI Sandbox | Alaaudin AI Labs</title>
     <style>
         :root {
-            --bg-obsidian: #000000;
-            --card-bg: rgba(12, 12, 12, 0.4);
-            --border-glow: rgba(255, 255, 255, 0.1);
-            --accent-primary: #10b981;
-            --accent-hover: #059669;
+            --bg-base: #050505;
+            --glass-bg: rgba(15, 15, 20, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent-primary: #10b981; /* Emerald */
+            --accent-secondary: #0ea5e9; /* Sky Blue */
             --text-main: #ffffff;
-            --text-dim: #71717a;
-            --plasma: rgba(16, 185, 129, 0.2);
+            --text-muted: #a1a1aa;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
 
-        /* ELITE TEXT SELECTION */
-        ::selection { background-color: var(--plasma); color: #fff; text-shadow: 0 0 8px rgba(16, 185, 129, 0.8); }
+        /* ELITE PLASMA TEXT SELECTION */
+        ::selection { background-color: rgba(16, 185, 129, 0.2); color: #fff; }
 
         body {
-            background-color: var(--bg-obsidian);
+            background-color: var(--bg-base);
             color: var(--text-main);
             display: flex;
             justify-content: center;
@@ -30,244 +29,238 @@
             min-height: 100vh;
             padding: 20px;
             overflow: hidden;
-            perspective: 1500px; /* For 3D effect */
+            position: relative;
         }
 
-        /* 🎬 CINEMATIC FILM GRAIN NOISE */
-        .grain-overlay {
-            position: fixed;
-            top: -50%; left: -50%; right: -50%; bottom: -50%;
-            width: 200%; height: 200vh;
-            background: transparent url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
-            opacity: 0.04;
-            z-index: 1;
-            pointer-events: none;
-            animation: noise 8s steps(10) infinite;
-        }
-
-        @keyframes noise {
-            0%, 100% { transform: translate(0, 0); }
-            10% { transform: translate(-5%, -10%); }
-            20% { transform: translate(-15%, 5%); }
-            30% { transform: translate(7%, -25%); }
-            40% { transform: translate(-5%, 25%); }
-            50% { transform: translate(-15%, 10%); }
-            60% { transform: translate(15%, 0%); }
-            70% { transform: translate(0%, 15%); }
-            80% { transform: translate(3%, 35%); }
-            90% { transform: translate(-10%, 10%); }
-        }
-
-        /* 🌌 AMBIENT BACKGROUND GLOW */
-        .ambient-glow {
+        /* 🌌 1. THE LIQUID AURORA BACKGROUND */
+        .aurora-container {
             position: absolute;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 60%);
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            filter: blur(80px);
+            top: 0; left: 0; right: 0; bottom: 0;
+            overflow: hidden;
             z-index: 0;
-            animation: pulseGlow 8s infinite alternate ease-in-out;
+            filter: blur(60px);
+            opacity: 0.6;
+            pointer-events: none;
         }
 
-        @keyframes pulseGlow {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        .aurora-blob {
+            position: absolute;
+            border-radius: 50%;
+            animation: moveBlob 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* 🛸 THE 3D OBSIDIAN CARD */
-        .nexus-card {
+        .blob-1 { width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(16,185,129,0.3) 0%, transparent 70%); top: -10%; left: -10%; }
+        .blob-2 { width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(14,165,233,0.2) 0%, transparent 70%); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .blob-3 { width: 45vw; height: 45vw; background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%); top: 40%; left: 30%; animation-duration: 25s; }
+
+        @keyframes moveBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 150px) scale(1.2); }
+        }
+
+        /* 🛡️ 2. THE PREMIUM FROSTED GLASS MONOLITH */
+        .matrix-card {
             position: relative;
             z-index: 10;
             width: 100%;
-            max-width: 440px;
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            max-width: 460px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px) saturate(150%);
+            -webkit-backdrop-filter: blur(30px) saturate(150%);
             padding: 45px 40px;
-            border-radius: 16px;
-            border: 1px solid var(--border-glow);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out; /* JavaScript handles the smooth tilt */
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* DYNAMIC SPOTLIGHT (Updated via JS) */
-        .nexus-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 16px;
-            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
-            z-index: -1;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-            opacity: 0;
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
-        .nexus-card:hover::before { opacity: 1; }
 
-        .header { text-align: center; margin-bottom: 35px; transform: translateZ(30px); }
-        .header .badge { display: inline-block; padding: 4px 10px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 100px; font-size: 10px; font-weight: 700; color: var(--accent-primary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
-        .header h1 { font-size: 26px; font-weight: 600; letter-spacing: -1px; margin-bottom: 8px; color: #fff; }
-        .header p { font-size: 14px; color: var(--text-dim); line-height: 1.5; }
+        /* 🟢 3. LIVE NODE STATUS INDICATOR */
+        .live-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 6px 12px;
+            border-radius: 100px;
+            width: fit-content;
+            margin: 0 auto 20px auto;
+        }
+        .live-dot { width: 6px; height: 6px; background: var(--accent-primary); border-radius: 50%; box-shadow: 0 0 10px var(--accent-primary); animation: pulseDot 2s infinite; }
+        .live-text { font-size: 10px; font-weight: 700; color: var(--accent-primary); letter-spacing: 1px; text-transform: uppercase; }
 
-        /* ⚡ MINIMALIST INPUTS */
-        .input-group { margin-bottom: 24px; position: relative; transform: translateZ(20px); }
-        .input-group label { display: block; font-size: 11px; font-weight: 500; color: #a1a1aa; margin-bottom: 8px; letter-spacing: 0.5px; }
+        @keyframes pulseDot { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+        .header { text-align: center; margin-bottom: 35px; }
+        .header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 10px; color: #fff; }
+        .header p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+        /* ✨ 4. FLOATING APPLE-STYLE INPUT LABELS */
+        .input-group { position: relative; margin-bottom: 25px; }
         
         .input-group input {
             width: 100%;
-            padding: 14px 0;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 16px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             color: #ffffff;
             font-size: 15px;
             font-weight: 400;
             transition: all 0.3s ease;
         }
-
-        .input-group input::placeholder { color: #52525b; }
         
-        /* The Expanding Bottom Border Glow */
-        .input-group input:focus { outline: none; border-bottom-color: transparent; }
-        .input-group::after {
-            content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px;
-            background: var(--accent-primary); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateX(-50%); box-shadow: 0 -2px 10px rgba(16, 185, 129, 0.5);
+        .input-group label {
+            position: absolute;
+            left: 18px;
+            top: 17px;
+            font-size: 15px;
+            color: var(--text-muted);
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: transparent;
         }
-        .input-group:focus-within::after { width: 100%; }
 
-        .security-note { font-size: 11px; color: #52525b; display: block; margin-top: 8px; line-height: 1.4; font-style: italic; }
+        /* The Magic Float Effect */
+        .input-group input:focus, 
+        .input-group input:not(:placeholder-shown) {
+            border-color: rgba(16, 185, 129, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.05);
+            outline: none;
+        }
 
-        /* 🚀 THE SWEEPING GRADIENT BUTTON */
+        .input-group input:focus ~ label, 
+        .input-group input:not(:placeholder-shown) ~ label {
+            top: -10px;
+            left: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent-primary);
+            background: #09090c; /* Matches glass darkness to hide border behind text */
+            padding: 0 6px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .security-note { font-size: 11px; color: #6b7280; display: block; margin-top: 8px; line-height: 1.4; padding-left: 4px; }
+
+        /* 🚀 5. MAGNETIC GLOW BUTTON */
         .btn-submit {
             width: 100%;
             padding: 16px;
-            background: var(--text-main);
-            color: #000;
+            background: #ffffff;
+            color: #000000;
             border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            transform: translateZ(40px);
             transition: all 0.3s ease;
-            margin-top: 15px;
+            margin-top: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
-        .btn-submit::before {
+        .btn-submit::after {
             content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
-            transition: all 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.4), transparent);
+            transition: all 0.6s ease;
         }
 
-        .btn-submit:hover { background: #e4e4e7; transform: translateZ(40px) scale(1.02); box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1); }
-        .btn-submit:hover::before { left: 100%; }
+        .btn-submit:hover { 
+            background: var(--accent-primary); 
+            color: #ffffff;
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); 
+        }
+        .btn-submit:hover::after { left: 100%; }
+        .btn-submit:active { transform: translateY(0); }
 
         /* 🎉 SUCCESS STATE */
-        .success-pane { display: none; text-align: center; transform: translateZ(30px); }
-        .success-pane .icon { width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(16, 185, 129, 0.3); }
-        .success-pane svg { width: 30px; height: 30px; stroke: var(--accent-primary); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-        .success-pane h2 { font-size: 22px; margin-bottom: 10px; }
-        .success-pane p { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+        .success-pane { display: none; text-align: center; animation: slideUpFade 0.6s ease forwards; }
+        .success-pane .icon-circle { width: 70px; height: 70px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px auto; box-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
+        .success-pane svg { width: 35px; height: 35px; stroke: var(--accent-primary); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .success-pane h2 { font-size: 24px; margin-bottom: 12px; font-weight: 700; color: #fff; }
+        .success-pane p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
     </style>
 </head>
 <body>
 
-<div class="grain-overlay"></div>
-<div class="ambient-glow"></div>
+<div class="aurora-container">
+    <div class="aurora-blob blob-1"></div>
+    <div class="aurora-blob blob-2"></div>
+    <div class="aurora-blob blob-3"></div>
+</div>
 
-<div class="nexus-card" id="monolithWrapper">
+<div class="matrix-card" id="monolithWrapper">
     <div id="formContent">
+        
+        <div class="live-status">
+            <div class="live-dot"></div>
+            <div class="live-text">CA Nodes Secure & Online</div>
+        </div>
+
         <div class="header">
-            <div class="badge">Alaaudin AI Labs</div>
             <h1>Initialize Sandbox</h1>
-            <p>Deploy a California Real Estate AI Node securely.</p>
+            <p>Deploy a California Real Estate AI Node securely to your business infrastructure.</p>
         </div>
 
         <form id="trialForm">
             <div class="input-group">
+                <input type="text" id="fullName" required placeholder=" ">
                 <label for="fullName">Legal Full Name</label>
-                <input type="text" id="fullName" required placeholder="John Doe">
             </div>
 
             <div class="input-group">
-                <label for="brokerEmail">Business Email</label>
-                <input type="email" id="brokerEmail" required placeholder="john@californiarealty.com">
+                <input type="email" id="brokerEmail" required placeholder=" ">
+                <label for="brokerEmail">Direct Business Email</label>
             </div>
 
             <div class="input-group">
-                <label for="whatsappNumber">Mobile / WhatsApp</label>
-                <input type="tel" id="whatsappNumber" required placeholder="+1 (555) 000-0000">
+                <input type="tel" id="whatsappNumber" required placeholder=" ">
+                <label for="whatsappNumber">Secure Mobile Routing / WhatsApp</label>
                 <span class="security-note">End-to-end encrypted protocol. No marketing solicitations.</span>
             </div>
 
             <div class="input-group">
-                <label for="websiteUrl">Infrastructure Domain</label>
-                <input type="url" id="websiteUrl" placeholder="https://domain.com (Optional)">
+                <input type="url" id="websiteUrl" placeholder=" ">
+                <label for="websiteUrl">Infrastructure Domain (Optional)</label>
+                <span class="security-note">Leave blank for a cloud-hosted standalone access node.</span>
             </div>
 
-            <button type="submit" class="btn-submit" id="submitBtn">Deploy Infrastructure</button>
+            <button type="submit" class="btn-submit" id="submitBtn">Deploy Infrastructure ⚡</button>
         </form>
     </div>
 
     <div class="success-pane" id="successContent">
-        <div class="icon">
+        <div class="icon-circle">
             <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
         </div>
         <h2>Deployment Active</h2>
-        <p>Sandbox compiling. Access tokens are being securely routed to your designated business endpoints.</p>
+        <p>Your sandbox is compiling. Access tokens and secure node configurations are being routed to your designated business endpoints.</p>
     </div>
 </div>
 
 <script>
-    // 🛸 100/10 INTERACTIVE 3D MAGNETIC TILT ENGINE + SPOTLIGHT
-    const card = document.getElementById('monolithWrapper');
-    
-    document.addEventListener('mousemove', (e) => {
-        // Spotlight calculation
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-
-        // 3D Tilt calculation
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        
-        // Limits the tilt angle
-        const rotateX = ((e.clientY - centerY) / (rect.height / 2)) * -10; 
-        const rotateY = ((e.clientX - centerX) / (rect.width / 2)) * 10;
-
-        // Apply smooth 3D transform only if mouse is relatively close to the card
-        if (e.clientX > rect.left - 100 && e.clientX < rect.right + 100 &&
-            e.clientY > rect.top - 100 && e.clientY < rect.bottom + 100) {
-            card.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        } else {
-            card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg)`;
-        }
-    });
-
-    // Reset tilt when mouse leaves window
-    document.addEventListener('mouseleave', () => {
-        card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg)`;
-    });
-
     document.getElementById('trialForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
         const button = document.getElementById('submitBtn');
         button.innerText = "Compiling Node...";
         button.style.pointerEvents = "none";
+        button.style.opacity = "0.7";
         
         const name = document.getElementById('fullName').value;
         const email = document.getElementById('brokerEmail').value;
         const phone = document.getElementById('whatsappNumber').value;
-        const website = document.getElementById('websiteUrl').value || "No Domain";
+        const website = document.getElementById('websiteUrl').value || "No Domain - Needs Standalone";
 
         // 🛑 ALAAUDIN BRO: YAHAN APNA TRIAL WEBHOOK URL DAALNA HAI!
         const n8n_webhook_url = "YOUR_NEW_N8N_TRIAL_WEBHOOK_URL"; 
@@ -289,11 +282,10 @@
             
             document.getElementById('formContent').style.display = 'none';
             document.getElementById('successContent').style.display = 'block';
-            card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg)`;
         } catch (error) {
+            // Fallback for MVP
             document.getElementById('formContent').style.display = 'none';
             document.getElementById('successContent').style.display = 'block';
-            card.style.transform = `perspective(1500px) rotateX(0deg) rotateY(0deg)`;
         }
     });
 </script>
