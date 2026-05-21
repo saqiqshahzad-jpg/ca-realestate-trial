@@ -6,26 +6,35 @@
     <title>Provision Enterprise AI sandbox Instance | Alaaudin AI Labs</title>
     <style>
         :root {
-            /* 🌌 Deep Noir Palette */
-            --bg-noir: #030303;
-            --form-bg: rgba(10, 10, 14, 0.75);
+            /* 🌌 Deep Cosmic Noir Palette */
+            --bg-noir: #030304;
+            --form-bg: rgba(10, 10, 15, 0.65);
             --accent-emerald: #10b981;
             --accent-cyan: #22d3ee;
-            --border-dark: rgba(255, 255, 255, 0.06);
+            --border-dark: rgba(255, 255, 255, 0.04);
             --text-main: #ffffff;
-            --text-muted: #8a8a8e;
+            --text-muted: #8c8c91;
+            --plasma-sel: rgba(16, 185, 129, 0.15);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
 
-        /* 👑 1: TEXT SELECTION SCENE IS ON (The Surrender Point!) */
+        /* 👑 1: THE ULTIMATE PLASMA TEXT SELECTION PROTOCOL IS ON! */
         ::selection {
-            background-color: var(--accent-emerald);
-            color: #000000;
+            background-color: var(--plasma-sel);
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+            animation: plasmaPulse 2s infinite alternate;
         }
         ::-moz-selection {
-            background-color: var(--accent-emerald);
-            color: #000000;
+            background-color: var(--plasma-sel);
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+        }
+
+        @keyframes plasmaPulse {
+            0% { background-color: rgba(16, 185, 129, 0.15); }
+            100% { background-color: rgba(34, 211, 238, 0.15); }
         }
 
         body {
@@ -40,99 +49,117 @@
             position: relative;
         }
 
-        /* 🌌 2: ADVANCED MOTION PARALLAX GRID (Live Background) */
+        /* 🌌 2: DYNAMIC COSMIC NEBULA BACKGROUND MESH */
         body::before {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
+            width: 100%;
+            height: 100%;
             background-image: 
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            top: -50%;
-            left: -50%;
+                radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.08) 0%, rgba(0,0,0,0) 40%),
+                radial-gradient(circle at 80% 10%, rgba(34, 211, 238, 0.06) 0%, rgba(0,0,0,0) 30%),
+                radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.05) 0%, rgba(0,0,0,0) 50%);
+            top: 0;
+            left: 0;
             z-index: 0;
-            transform: perspective(1000px) rotateX(60deg) translateY(0);
-            animation: gridMove 20s linear infinite;
+            animation: nebulaShift 20s ease-in-out infinite alternate;
         }
 
-        @keyframes gridMove {
-            0% { transform: perspective(1000px) rotateX(60deg) translateY(0); }
-            100% { transform: perspective(1000px) rotateX(60deg) translateY(50px); }
+        @keyframes nebulaShift {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1) rotate(5deg); }
         }
 
-        /* ⚡ 3: STEALTH MONOLITH CONTAINER WITH ROTATING NEON BORDER */
+        /* 🛡️ 3: STEALTH MONOLITH-Ω CONTAINER (ULTRA GLASSMORPHISM) */
         .cyber-wrapper {
             position: relative;
             z-index: 10;
             width: 100%;
             max-width: 480px;
             background: var(--form-bg);
-            backdrop-filter: blur(35px) saturate(200%);
-            -webkit-backdrop-filter: blur(35px) saturate(200%);
+            /* Strong professional blur and saturation */
+            backdrop-filter: blur(40px) saturate(220%);
+            -webkit-backdrop-filter: blur(40px) saturate(220%);
             padding: 50px 40px;
-            border-radius: 20px;
-            overflow: hidden; /* Important for border animation */
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 24px;
+            overflow: hidden; /* For inner flare animation */
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
             transform: scale(0.9) translateY(20px);
-            animation: formEntry 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+            animation: monolithEntry 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
         }
 
-        @keyframes formEntry {
+        @keyframes monolithEntry {
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* 🦾 THE INVISIBLE SPINNING NEON BORDER (Pure Ego!) */
+        /* 🦾 THE INVISIBLE SHIFTING MOUSE BORDER (Interactive Ego!) */
         .cyber-wrapper::before {
             content: '';
             position: absolute;
-            width: 150%;
-            height: 150%;
-            top: -25%;
-            left: -25%;
-            background: conic-gradient(
-                from 0deg,
-                transparent 30%,
-                var(--accent-emerald) 40%,
-                var(--accent-cyan) 50%,
-                var(--accent-emerald) 60%,
-                transparent 70%
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(
+                200px circle at var(--mouse-x) var(--mouse-y),
+                rgba(16, 185, 129, 0.15) 0%,
+                transparent 100%
             );
-            animation: borderSpin 6s linear infinite;
-            z-index: -2;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
         }
 
-        /* Strong blur for neon effect */
+        .cyber-wrapper:hover::before { opacity: 1; }
+
+        /* Subtle dark inner background with inset shadow */
         .cyber-wrapper::after {
             content: '';
             position: absolute;
-            inset: 1px; /* Subtle 1px inner dark background */
+            inset: 1.5px;
             background: var(--form-bg);
-            border-radius: 20px;
+            border-radius: 24px;
             z-index: -1;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
         }
 
-        @keyframes borderSpin {
+        /* 🌟 ROTATING INNER FLARE (The Nirvana Touch) */
+        .inner-flare {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                rgba(16, 185, 129, 0) 0%,
+                rgba(16, 185, 129, 0.05) 50%,
+                rgba(16, 185, 129, 0) 100%
+            );
+            top: -50%;
+            left: -50%;
+            animation: flareRotate 10s linear infinite;
+            mix-blend-mode: color-dodge;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        @keyframes flareRotate {
             to { transform: rotate(360deg); }
         }
 
         .header { text-align: center; margin-bottom: 40px; }
-        .header .lab-tag { font-size: 12px; font-weight: 900; color: var(--accent-cyan); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; }
+        .header .lab-tag { font-size: 11px; font-weight: 900; color: var(--accent-emerald); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; }
         .header h1 { font-size: 28px; font-weight: 700; letter-spacing: -1px; margin-bottom: 10px; color: #ffffff; }
         .header p { font-size: 15px; color: var(--text-muted); line-height: 1.6; max-width: 90%; margin: 0 auto; }
 
         /* ⚡ ULTRACLEAN INTERACTIVE INPUTS */
         .input-group { margin-bottom: 28px; position: relative; }
-        .input-group label { display: block; font-size: 11px; font-weight: 700; color: #737373; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+        .input-group label { display: block; font-size: 11px; font-weight: 700; color: #707070; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
         
         .input-group input {
             width: 100%;
             padding: 16px 20px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.02);
             border-radius: 12px;
             color: #ffffff;
             font-size: 16px;
@@ -140,22 +167,22 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .input-group input::placeholder { color: #444444; }
+        .input-group input::placeholder { color: #404040; }
         
-        /* Deep Focus Light Flare */
+        /* Interactive Input Glow (Makkhan Transition) */
         .input-group input:focus {
             outline: none;
-            background: rgba(0, 0, 0, 0.6);
-            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(16, 185, 129, 0.25);
             box-shadow: 
-                0 0 10px rgba(16, 185, 129, 0.05),
-                inset 0 0 10px rgba(16, 185, 129, 0.03);
+                0 0 15px rgba(16, 185, 129, 0.05),
+                inset 0 0 10px rgba(16, 185, 129, 0.02);
         }
 
-        /* Special Trust Micro-copy */
+        /* Specialized Security Micro-copy (friction removed, trust built) */
         .input-group .security-note { font-size: 11px; color: #555555; display: block; margin-top: 7px; line-height: 1.5; }
 
-        /* 🚀 THE STEALTH ACTIVATE BUTTON (Neon Glow) */
+        /* 🚀 THE STEALTH ACTIVATE BUTTON (Dual Glow) */
         .btn-submit {
             width: 100%;
             padding: 18px;
@@ -167,7 +194,7 @@
             font-weight: 800;
             letter-spacing: 0.5px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
@@ -175,8 +202,8 @@
         }
 
         .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3), 0 0 15px rgba(34, 211, 238, 0.1);
+            transform: translateY(-2.5px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2), 0 0 15px rgba(34, 211, 238, 0.08);
         }
 
         .btn-submit:active { transform: translateY(0); }
@@ -190,9 +217,9 @@
         }
 
         .success-pane .cyber-icon {
-            width: 72px;
-            height: 72px;
-            background: rgba(16, 185, 129, 0.05);
+            width: 76px;
+            height: 76px;
+            background: rgba(16, 185, 129, 0.04);
             border: 1px solid var(--accent-emerald);
             border-radius: 50%;
             display: flex;
@@ -200,7 +227,7 @@
             align-items: center;
             margin: 0 auto 25px auto;
             color: var(--accent-emerald);
-            font-size: 32px;
+            font-size: 36px;
             font-weight: bold;
             box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
         }
@@ -217,6 +244,8 @@
 <body>
 
 <div class="cyber-wrapper" id="monolithWrapper">
+    <div class="inner-flare"></div>
+
     <div id="formContent">
         <div class="header">
             <div class="lab-tag">Alaaudin AI Labs</div>
@@ -227,7 +256,7 @@
         <form id="trialForm">
             <div class="input-group">
                 <label for="fullName">Legal Full Name</label>
-                <input type="text" id="fullName" required placeholder="e.g., Sarah Jenkins">
+                <input type="text" id="fullName" required placeholder=" Sarah Jenkins">
             </div>
 
             <div class="input-group">
@@ -259,6 +288,20 @@
 </div>
 
 <script>
+    // 🧠 4: INTERACTIVE MOUSE-SHIFTING BORDER ENGINE
+    document.querySelector('.cyber-wrapper').addEventListener('mousemove', (e) => {
+        const wrapper = e.currentTarget;
+        const rect = wrapper.getBoundingClientRect();
+        
+        // Calculate dynamic X and Y coordinates inside the form
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Set CSS variables that drive the dynamic background border
+        wrapper.style.setProperty('--mouse-x', `${x}px`);
+        wrapper.style.setProperty('--mouse-y', `${y}px`);
+    });
+
     document.getElementById('trialForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
@@ -284,7 +327,7 @@
         };
 
         try {
-            // Push data directly to your n8n infrastructure (needs CORS enabled on n8n)
+            // Push data directly to your n8n infrastructure
             await fetch(n8n_webhook_url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -295,7 +338,7 @@
             document.getElementById('formContent').style.display = 'none';
             document.getElementById('successContent').style.display = 'block';
         } catch (error) {
-            // Fallback gracefully (CORS issue or network drop) - still show success for MVP
+            // Fallback gracefully (show success for MVP)
             document.getElementById('formContent').style.display = 'none';
             document.getElementById('successContent').style.display = 'block';
         }
