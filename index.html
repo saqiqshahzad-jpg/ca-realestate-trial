@@ -3,22 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request 3-Day Enterprise AI Access | Alaaudin AI Labs</title>
+    <title>Provision Enterprise AI sandbox Instance | Alaaudin AI Labs</title>
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #070709 0%, #0d0d13 100%);
-            --accent-green: #10b981;
-            --accent-glow: rgba(16, 185, 129, 0.2);
-            --glass-bg: rgba(18, 18, 24, 0.55);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --text-muted: #8e8e93;
+            /* 🌌 Deep Noir Palette */
+            --bg-noir: #030303;
+            --form-bg: rgba(10, 10, 14, 0.75);
+            --accent-emerald: #10b981;
+            --accent-cyan: #22d3ee;
+            --border-dark: rgba(255, 255, 255, 0.06);
+            --text-main: #ffffff;
+            --text-muted: #8a8a8e;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
 
+        /* 👑 1: TEXT SELECTION SCENE IS ON (The Surrender Point!) */
+        ::selection {
+            background-color: var(--accent-emerald);
+            color: #000000;
+        }
+        ::-moz-selection {
+            background-color: var(--accent-emerald);
+            color: #000000;
+        }
+
         body {
-            background: var(--bg-gradient);
-            color: #ffffff;
+            background-color: var(--bg-noir);
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -28,196 +40,221 @@
             position: relative;
         }
 
-        /* 🌌 ANIMATED GLOWING GRADIENT MESH IN BACKGROUND */
+        /* 🌌 2: ADVANCED MOTION PARALLAX GRID (Live Background) */
         body::before {
             content: '';
             position: absolute;
-            width: 650px;
-            height: 650px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(0,0,0,0) 70%);
-            top: -15%;
-            left: -10%;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            top: -50%;
+            left: -50%;
             z-index: 0;
-            animation: floatMesh 15s infinite alternate ease-in-out;
-            filter: blur(40px);
+            transform: perspective(1000px) rotateX(60deg) translateY(0);
+            animation: gridMove 20s linear infinite;
         }
 
-        body::after {
-            content: '';
-            position: absolute;
-            width: 550px;
-            height: 550px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0,0,0,0) 70%);
-            bottom: -15%;
-            right: -10%;
-            z-index: 0;
-            animation: floatMesh 12s infinite alternate-reverse ease-in-out;
-            filter: blur(40px);
+        @keyframes gridMove {
+            0% { transform: perspective(1000px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(1000px) rotateX(60deg) translateY(50px); }
         }
 
-        @keyframes floatMesh {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(60px, 60px) scale(1.15); }
-        }
-
-        /* 🧪 10/10 STRONG BLUR GLASSMORPHISM CONTAINER */
-        .wrapper {
+        /* ⚡ 3: STEALTH MONOLITH CONTAINER WITH ROTATING NEON BORDER */
+        .cyber-wrapper {
             position: relative;
             z-index: 10;
             width: 100%;
             max-width: 480px;
-            background: var(--glass-bg);
-            /* Yeh line wo strong professional blur create karti hai! */
-            backdrop-filter: blur(28px) saturate(200%);
-            -webkit-backdrop-filter: blur(28px) saturate(200%);
-            padding: 45px 40px;
-            border-radius: 24px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transform: translateY(0);
+            background: var(--form-bg);
+            backdrop-filter: blur(35px) saturate(200%);
+            -webkit-backdrop-filter: blur(35px) saturate(200%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            overflow: hidden; /* Important for border animation */
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            animation: formEntry 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
         }
 
-        .wrapper:hover {
-            border-color: rgba(16, 185, 129, 0.25);
-            box-shadow: 0 40px 70px rgba(0, 0, 0, 0.7), 0 0 40px rgba(16, 185, 129, 0.08);
+        @keyframes formEntry {
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .header { text-align: center; margin-bottom: 35px; }
-        .header .logo { font-size: 13px; font-weight: 800; color: var(--accent-green); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
-        .header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; color: #ffffff; }
-        .header p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+        /* 🦾 THE INVISIBLE SPINNING NEON BORDER (Pure Ego!) */
+        .cyber-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            top: -25%;
+            left: -25%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 30%,
+                var(--accent-emerald) 40%,
+                var(--accent-cyan) 50%,
+                var(--accent-emerald) 60%,
+                transparent 70%
+            );
+            animation: borderSpin 6s linear infinite;
+            z-index: -2;
+        }
 
-        /* ⚡ ANIMATED FORM INPUTS */
-        .input-group { margin-bottom: 24px; position: relative; }
-        .input-group label { display: block; font-size: 12px; font-weight: 600; color: #aeaeaf; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        /* Strong blur for neon effect */
+        .cyber-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 1px; /* Subtle 1px inner dark background */
+            background: var(--form-bg);
+            border-radius: 20px;
+            z-index: -1;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+        }
+
+        @keyframes borderSpin {
+            to { transform: rotate(360deg); }
+        }
+
+        .header { text-align: center; margin-bottom: 40px; }
+        .header .lab-tag { font-size: 12px; font-weight: 900; color: var(--accent-cyan); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; }
+        .header h1 { font-size: 28px; font-weight: 700; letter-spacing: -1px; margin-bottom: 10px; color: #ffffff; }
+        .header p { font-size: 15px; color: var(--text-muted); line-height: 1.6; max-width: 90%; margin: 0 auto; }
+
+        /* ⚡ ULTRACLEAN INTERACTIVE INPUTS */
+        .input-group { margin-bottom: 28px; position: relative; }
+        .input-group label { display: block; font-size: 11px; font-weight: 700; color: #737373; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
         
         .input-group input {
             width: 100%;
-            padding: 15px 18px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 16px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 12px;
             color: #ffffff;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 400;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .input-group input::placeholder { color: #48484a; }
+        .input-group input::placeholder { color: #444444; }
         
-        /* Focus Glow Effects */
+        /* Deep Focus Light Flare */
         .input-group input:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.06);
-            border-color: var(--accent-green);
-            box-shadow: 0 0 20px var(--accent-glow);
+            background: rgba(0, 0, 0, 0.6);
+            border-color: rgba(16, 185, 129, 0.3);
+            box-shadow: 
+                0 0 10px rgba(16, 185, 129, 0.05),
+                inset 0 0 10px rgba(16, 185, 129, 0.03);
         }
 
-        /* Micro-copy for Trust Building */
-        .input-group .trust-note { font-size: 11px; color: #636366; display: block; margin-top: 6px; line-height: 1.4; }
+        /* Special Trust Micro-copy */
+        .input-group .security-note { font-size: 11px; color: #555555; display: block; margin-top: 7px; line-height: 1.5; }
 
-        /* 🚀 THE PREMIUM GLOW BUTTON */
+        /* 🚀 THE STEALTH ACTIVATE BUTTON (Neon Glow) */
         .btn-submit {
             width: 100%;
-            padding: 16px;
-            background: var(--accent-green);
-            color: #ffffff;
+            padding: 18px;
+            background: linear-gradient(135deg, #11c690 0%, #059669 100%);
+            color: #000000;
             border: none;
             border-radius: 12px;
-            font-size: 15px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 800;
             letter-spacing: 0.5px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
             margin-top: 10px;
         }
 
         .btn-submit:hover {
-            background: #11c690;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3), 0 0 15px rgba(34, 211, 238, 0.1);
         }
 
         .btn-submit:active { transform: translateY(0); }
 
-        /* 🎉 SMOOTH SUCCESS STATE */
-        .success-box {
+        /* 🎉 SMOOTH DEEP ENTRY SUCCESS STATE */
+        .success-pane {
             display: none;
             text-align: center;
-            padding: 10px 0;
-            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            padding: 20px 0;
+            animation: cyberFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .success-box .icon {
-            width: 64px;
-            height: 64px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid var(--accent-green);
+        .success-pane .cyber-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid var(--accent-emerald);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 auto 20px auto;
-            color: var(--accent-green);
-            font-size: 28px;
+            margin: 0 auto 25px auto;
+            color: var(--accent-emerald);
+            font-size: 32px;
             font-weight: bold;
-            box-shadow: 0 0 25px var(--accent-glow);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
         }
 
-        .success-box h2 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
-        .success-box p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+        .success-pane h2 { font-size: 24px; font-weight: 700; margin-bottom: 15px; color: #ffffff; letter-spacing: -0.5px; }
+        .success-pane p { font-size: 15px; color: var(--text-muted); line-height: 1.7; max-width: 90%; margin: 0 auto; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+        @keyframes cyberFadeIn {
+            from { opacity: 0; transform: scale(0.9) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
     </style>
 </head>
 <body>
 
-<div class="wrapper" id="formWrapper">
+<div class="cyber-wrapper" id="monolithWrapper">
     <div id="formContent">
         <div class="header">
-            <div class="logo">Alaaudin AI Labs</div>
-            <h1>Request Trial Access</h1>
-            <p>Deploy a dedicated California Real Estate AI Advisor to your business infrastructure for 3 days.</p>
+            <div class="lab-tag">Alaaudin AI Labs</div>
+            <h1>Provision Instance</h1>
+            <p>Compile a secure 3-day enterprise AI advisor sandbox node within your California business infrastructure.</p>
         </div>
 
         <form id="trialForm">
             <div class="input-group">
-                <label for="fullName">Full Name</label>
+                <label for="fullName">Legal Full Name</label>
                 <input type="text" id="fullName" required placeholder="e.g., Sarah Jenkins">
             </div>
 
             <div class="input-group">
                 <label for="brokerEmail">Direct Business Email</label>
-                <input type="email" id="brokerEmail" required placeholder="e.g., sarah@californiarealty.com">
+                <input type="email" id="brokerEmail" required placeholder="sarah@californiarealty.com">
             </div>
 
             <div class="input-group">
-                <label for="whatsappNumber">Direct Mobile / WhatsApp</label>
-                <input type="tel" id="whatsappNumber" required placeholder="e.g., +1 (555) 382-9901">
-                <span class="trust-note">🔒 Secure Routing: Used strictly to text your instant dashboard credentials. No marketing spam, ever.</span>
+                <label for="whatsappNumber">Secure Mobile Routing / WhatsApp</label>
+                <input type="tel" id="whatsappNumber" required placeholder="+1 (555) 382-9901">
+                <span class="security-note">🔒 Zero-Spam Gateway: Used strictly for texts containing secure access tokens.</span>
             </div>
 
             <div class="input-group">
-                <label for="websiteUrl">Current Business Website (Optional)</label>
-                <input type="url" id="websiteUrl" placeholder="e.g., https://www.sarahjenkinsrealty.com">
-                <span class="trust-note">No active domain? Leave blank. We will provision a cloud-hosted standalone access link for your trial.</span>
+                <label for="websiteUrl">Infrastructure Web Domain (Optional)</label>
+                <input type="url" id="websiteUrl" placeholder="https://sarahjenkinsrealty.com">
+                <span class="security-note">No active domain? Leave blank. We will provision a dedicated cloud-hosted sandbox access node.</span>
             </div>
 
-            <button type="submit" class="btn-submit" id="submitBtn">Provision My AI Agent ⚡</button>
+            <button type="submit" class="btn-submit" id="submitBtn">Compile AI Sandbox Node ⚡</button>
         </form>
     </div>
 
-    <div class="success-box" id="successContent">
-        <div class="icon">✓</div>
-        <h2>Instance Provisioned!</h2>
-        <p>Your custom sandbox infrastructure is currently compiling. Access instructions, your dedicated testing node, and API configurations are being dispatched to your business email and mobile router within 2 hours.</p>
+    <div class="success-pane" id="successContent">
+        <div class="cyber-icon">✔️</div>
+        <h2>Compilation Triggered</h2>
+        <p>Your dedicated sandbox infrastructure is now compiling. Instantiation protocols, access tokens, and node configurations are being dispatched to your business email router and mobile gateway within the next 2 hours.</p>
     </div>
 </div>
 
@@ -226,16 +263,16 @@
         e.preventDefault();
         
         const button = document.getElementById('submitBtn');
-        button.innerText = "Compiling Infrastructure...";
-        button.style.opacity = "0.7";
+        button.innerText = "Compiling Sandbox Node...";
+        button.style.opacity = "0.6";
         button.style.pointerEvents = "none";
         
         const name = document.getElementById('fullName').value;
         const email = document.getElementById('brokerEmail').value;
         const phone = document.getElementById('whatsappNumber').value;
-        const website = document.getElementById('websiteUrl').value || "No Active Website (Needs Dedicated Standalone Link)";
+        const website = document.getElementById('websiteUrl').value || "Needs Dedicated Standalone Node (No Domain Provided)";
 
-        // 🛑 ALAAUDIN BRO: YAHAN APNA NAYA N8N WEBHOOK URL DAALNA HAI!
+        // 🛑 ALAAUDIN BRO: YAHAN APNA TRIAL WEBHOOK URL DAALNA HAI!
         const n8n_webhook_url = "YOUR_NEW_N8N_TRIAL_WEBHOOK_URL"; 
 
         const payload = {
@@ -243,11 +280,11 @@
             "broker_email": email,
             "broker_phone": phone,
             "broker_website": website,
-            "status": "Trial Pipeline Activated"
+            "status": "Sandbox Node Pipeline Triggered"
         };
 
         try {
-            // Push data directly to your n8n infrastructure
+            // Push data directly to your n8n infrastructure (needs CORS enabled on n8n)
             await fetch(n8n_webhook_url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -258,7 +295,7 @@
             document.getElementById('formContent').style.display = 'none';
             document.getElementById('successContent').style.display = 'block';
         } catch (error) {
-            // Fallback gracefully if network drops
+            // Fallback gracefully (CORS issue or network drop) - still show success for MVP
             document.getElementById('formContent').style.display = 'none';
             document.getElementById('successContent').style.display = 'block';
         }
